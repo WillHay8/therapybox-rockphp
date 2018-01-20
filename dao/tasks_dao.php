@@ -1,6 +1,7 @@
 <?php
 
 function get_tasks_for_user($user_id){
+    include 'connect_will.php';
     $conn = connect();
 	$get_stmt = $conn->prepare("select id, title, complete, date_created, date_completed");
     $get_stmt->bind_param('i', $user_id);

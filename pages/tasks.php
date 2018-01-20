@@ -1,8 +1,8 @@
 <?php
 error_log("tasks.php");
-include '../dao/task_dao.php';
-
-$tasks = get_tasks($_SESSION['user_id']);
+include '../dao/tasks_dao.php';
+$_SESSION['user_id'] = 1;
+$tasks = get_tasks_for_user($_SESSION['user_id']);
 
 include '../inc/header.php';
 ?>
