@@ -80,7 +80,7 @@ if(isset($_POST['signup'])){
 
 ?>
 
-
+<div>Sign Up Page</div>
 <form action="signup.php" method="post">
     <label for="username">Username</label>
     <input type="text" id="username" name="username"><br>
@@ -92,3 +92,7 @@ if(isset($_POST['signup'])){
     <input type="email" name="email" id="email">
     <input type="submit" name="signup" value="Sign Up">
 </form>
+
+<div>
+    <a href="/therapybox-rockphp/">Go to Login Page</a>
+</div>

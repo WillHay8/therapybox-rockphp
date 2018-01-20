@@ -10,9 +10,9 @@ include "../inc/header.php";
 
 
 if(isset($_SESSION)){
-    include "pages/main.php";
+    include "main.php";
 }else{
-    include "pages/signin.php";
+    include "signin.php";
 }
 
 include "../inc/footer.php";

@@ -10,7 +10,6 @@ session_start();
 /**
  * Include ircmaxell's password_compat library.
  */
-require 'lib/password.php';
 
 /**
  * Include our MySQL connection.
@@ -24,10 +23,10 @@ if(isset($_POST['login'])){
 
     //Retrieve the field values from our login form.
     $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
-    $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
+    $passwordAttempt = !empty($_POST['password'])   ? trim($_POST['password']) : null;
 
     //Retrieve the user account information for the given username.
-    $sql = "SELECT id, username, password FROM users WHERE username = :username";
+    $sql = "SELECT id, username, password_hash FROM user WHERE username = :username";
     $stmt = $pdo->prepare($sql);
 
     //Bind value.
@@ -49,7 +48,7 @@ if(isset($_POST['login'])){
         //password hash that we stored in our users table.
 
         //Compare the passwords.
-        $validPassword = password_verify($passwordAttempt, $user['password']);
+        $validPassword = password_verify($passwordAttempt, $user['password_hash']);
 
         //If $validPassword is TRUE, the login has been successful.
         if($validPassword){
@@ -58,8 +57,8 @@ if(isset($_POST['login'])){
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['logged_in'] = time();
 
-            //Redirect to our protected page, which we called home.php
-            header('Location: home.php');
+            //Redirect to our protected page, which we called main.php
+            header('Location: main.php');
             exit;
 
         } else{
@@ -86,5 +85,8 @@ if(isset($_POST['login'])){
     <input type="text" id="password" name="password"><br>
     <input type="submit" name="login" value="Sign In">
 </form>
+<div>
+    <span>OR </span><a href="/therapybox-rockphp/signup">Sign Up</a>
+</div>
 </body>
 </html>
