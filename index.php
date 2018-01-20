@@ -1,2 +1,13 @@
-<h1>Hello World!</h1>
-<p>We are rock php!</p>
+
+<?php
+include 'inc/header.php';
+
+
+
+include 'pages/signup.php';
+
+
+include 'inc/footer.php';
+
+
+
