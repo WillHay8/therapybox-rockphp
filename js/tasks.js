@@ -1,9 +1,15 @@
 console.log("tasks.js");
-$('#task-input-con').hide();
+$('#task-input-con').hide()
+$('#task-input').keyup(function(event){
+    if(event.which == 13){
+        $('#submit-task').click();
+    }
+});
 
 function createTask(){
-    $('#task-input-con').show();
     $('#create-task').hide();
+    $('#task-input-con').show()
+    $('#task-input').focus();
 
 }
 
