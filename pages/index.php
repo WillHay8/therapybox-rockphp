@@ -1,13 +1,17 @@
 
 <?php
-include 'inc/header.php';
+include '../inc/header.php';
 
 
 
-include 'pages/signup.php';
+if(isset($_SESSION)){
+    include "main.php";
+}else{
+    include "signin.php";
+}
 
 
-include 'inc/footer.php';
+include '../inc/footer.php';
 
 
 

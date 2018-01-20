@@ -5,6 +5,7 @@
 /**
  * Start the session.
  */
+
 session_start();
 
 /**
@@ -42,6 +43,7 @@ if(isset($_POST['login'])){
     if($user === false){
         //Could not find a user with that username!
         //PS: You might want to handle this error in a more user-friendly manner!
+        echo "<a href='/therapybox-rockphp/'>Back</a><br/>";
         die('Incorrect username / password combination!');
     } else{
         //User account found. Check to see if the given password matches the
@@ -63,6 +65,7 @@ if(isset($_POST['login'])){
 
         } else{
             //$validPassword was FALSE. Passwords do not match.
+            echo "<a href='/therapybox-rockphp/'>Back</a><br/>";
             die('Incorrect username / password combination!');
         }
     }
@@ -77,16 +80,20 @@ if(isset($_POST['login'])){
     <title>Login</title>
 </head>
 <body>
-<h1>Login</h1>
-<form action="signin.php" method="post">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username"><br>
-    <label for="password">Password</label>
-    <input type="text" id="password" name="password"><br>
-    <input type="submit" name="login" value="Sign In">
-</form>
-<div>
-    <span>OR </span><a href="/therapybox-rockphp/signup">Sign Up</a>
+<div class="container">
+    <h1>Login</h1>
+    <form action="signin.php" method="post" style="width:40%;border: 1px solid #ccc; padding: 20px;">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control"><br>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" class="form-control"><br>
+        </div>
+        <input type="submit" name="login" value="Sign In" class="btn btn-primary">
+    </form>
+    <div>
+        <span>OR </span><a href="/therapybox-rockphp/signup">Sign Up</a>
+    </div>
 </div>
-</body>
-</html>

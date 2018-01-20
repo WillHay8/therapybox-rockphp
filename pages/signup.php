@@ -80,19 +80,39 @@ if(isset($_POST['signup'])){
 
 ?>
 
-<div>Sign Up Page</div>
-<form action="signup.php" method="post">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username"><br>
-    <label for="password">Password</label>
-    <input type="text" id="password" name="password_hash"><br>
-    <label for="confirm_password">Confirm Password</label>
-    <input type="text" id="confirm_password" name="confirm_password"><br>
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email">
-    <input type="submit" name="signup" value="Sign Up">
-</form>
+<?php
+    include "../inc/header.php";
+?>
 
-<div>
-    <a href="/therapybox-rockphp/">Go to Login Page</a>
+<div class="container">
+    <h1>Sign Up Page</h1>
+    <form action="signup.php" method="post" style="width: 40%;border: 1px solid #ccc;padding: 20px;">
+        <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control">
+        </div>
+
+        <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password_hash"  class="form-control">
+        </div>
+
+        <div class="form-group">
+        <label for="confirm_password">Confirm Password</label>
+        <input type="text" id="confirm_password" name="confirm_password"   class="form-control">
+        </div>
+        <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" class="form-control">
+        </div>
+        <input type="submit" name="signup" value="Sign Up"   class="btn btn-primary">
+    </form>
+
+    <div>
+        <a href="/therapybox-rockphp/">Go to Login Page</a>
+    </div>
 </div>
+
+<?php
+    include "../inc/footer.php";
+?>
