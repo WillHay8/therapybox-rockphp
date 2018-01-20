@@ -3,6 +3,8 @@ error_log("tasks-ajax.php");
 include('../local_constants.php');
 include_once('../dao/tasks-dao.php');
 
+$_SESSION['user_id'] = 1;
+
 $success = 1;
 $message = "";
 $extraData = [];
@@ -17,7 +19,7 @@ $action = isset($_POST['action'])? $_POST['action'] : '';
 
 if($action == 'createTask'){
     $title = $_POST['title'];
-    $id = create_task($title);
+    $id = create_task($user_id, $title);
     $task = [
         'id' => $id,
         'title' => $title

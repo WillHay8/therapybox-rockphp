@@ -1,6 +1,6 @@
 <?php
 error_log("tasks.php");
-include '../dao/tasks_dao.php';
+include '../dao/tasks-dao.php';
 $_SESSION['user_id'] = 1;
 $tasks = get_tasks_for_user($_SESSION['user_id']);
 
@@ -17,16 +17,17 @@ include '../inc/header.php';
             <div class="row">
                 <div class="col-12">
                     <div class="tasks-con">
-                            <div class="task prototype">
-                                <span class="title"></span><span class="complete"><input id="" type="checkbox" /></span>
-                            </div>
                         <?php foreach($tasks as $task){ ?>
 
                             <div id="task-<?=$task['id']?>" class="task">
-                                <span class="title"><?=$task['title']?></span><span><input id="task-check-<?=$task['id']?>" type="checkbox" <?php echo $task['complete']? 'checked' : '' ?> /></span>
+                                <span class="title"><?=$task['title']?></span><span><input id="task-check-<?=$task['id']?>" class="task-checkbox" type="checkbox" <?php echo $task['complete']? 'checked' : '' ?> onclick="completeTask(event)" data-task-id="<?=$task['id']?>"/></span>
                             </div>
 
                         <?php } ?>
+
+                        <div class="task prototype">
+                                <span class="title"></span><span class="complete"><input id="" class="task-checkbox" type="checkbox" /></span>
+                            </div>
                     </div>
                     <div id="task-input-con" class="row">
                         <div class="col-10">
@@ -51,5 +52,5 @@ include '../inc/header.php';
 include '../inc/footer.php';
 ?>
 <script>
-console.log("tasks.php");
+console.log("tasks2.php");
 </script>

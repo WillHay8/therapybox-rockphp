@@ -15,8 +15,10 @@ include '../local_constants.php';
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   <link rel="stylesheet" href="<?=$root_url.'css/style.css'?>">
+
 </head>
 <body>
+
 
 <p>Header</p>
 
