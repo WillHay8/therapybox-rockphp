@@ -1,6 +1,4 @@
-drop database therapybox_rock_php;
 create database therapybox_rock_php;
-use therapybox_rock_php;
 
 create table user (
     id mediumint not null auto_increment,
@@ -8,7 +6,7 @@ create table user (
     email varchar(255),
     password_hash varchar(255),
     date_signed_up datetime,
-    primary key (id)
+    primary key id,
 );
 
 create table task (
@@ -18,6 +16,6 @@ create table task (
     complete boolean,
     date_created datetime not null,
     date_completed datetime,
-    primary key (id),
-    foreign key (user_id) references user(id) on delete cascade on update cascade
+    primary key id,
+    foreign key user_id references user(id) on delete cascade on update cascade
 );
