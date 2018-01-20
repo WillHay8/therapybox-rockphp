@@ -21,3 +21,8 @@ create table task (
     primary key (id),
     foreign key (user_id) references user(id) on delete cascade on update cascade
 );
+
+
+insert into user (username, email, password_hash, date_signed_up) values ('will', 'will@gmail.com', 'hello', NOW());
+
+insert into task (user_id, title, complete, date_created) values (1, 'first task', 0, NOW()), (1, 'second task', 1, NOW()), (1, 'third task', 0, NOW());
