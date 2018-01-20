@@ -1,4 +1,6 @@
-
+<?php 
+include '../local_constants.php';
+?>
 <!doctype html>
 
 <html>

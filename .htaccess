@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !(pages|ajax|images|js|css|fonts)/
+RewriteRule ^(.*)$ pages/$1 [QSA]
+
+RewriteRule (tasks|home|signup|login)(/|)$ $1.php [QSA] 
