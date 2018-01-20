@@ -1,32 +1,29 @@
 <?php
-function task_dao_connect(){
-	include '../local_constants.php';
-	include $private_dir . 'kampfire-sql-config.php';
-	$conn = new mysqli($servername, $username, $password, $database);
-	if($conn->connect_error){
-		die("connection failed: " . $conn->connect_error);
-	}
-	return $conn;
-} 
 
-function get_fuel_count_for_kamp($kamp_id){
-    $conn = fuel_dao_connect();
-	$get_stmt = $conn->prepare("select count(*) from fuel where kampId=?");
-    $get_stmt->bind_param('i', $kamp_id);
+function get_tasks_for_user($user_id){
+    $conn = connect();
+	$get_stmt = $conn->prepare("select id, title, complete, date_created, date_completed");
+    $get_stmt->bind_param('i', $user_id);
     if($get_stmt->execute()){
-        $get_stmt->bind_result($fuel_count);
-        if($get_stmt->fetch()){
-            $get_stmt->close();
-            $conn->close();
-            return $fuel_count;
+        $tasks = [];
+        $get_stmt->bind_result($id, $title, $complete, $date_created, $date_completed);
+        while($get_stmt->fetch()){
+            $tasks[] = [
+                "id"=> $id,
+                "title" => $title, 
+                "complete" => $complete,
+                "date_created" => $date_created, 
+                "date_completed" => $date_completed
+            ];
         }
-        else{
-            error_log("error fetching get fuel result");
-        }
+        $get_stmt->close();
+        $conn->close();
+        return $tasks;
     }else{
-        error_log("error executing get fuel statement");
+        error_log("error executing get tasks statement");
+        error_log($conn->error);
     }
     $get_stmt->close();
     $conn->close();
-    return $false;
+    return false;
 }
